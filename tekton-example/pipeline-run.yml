@@ -3,7 +3,8 @@ kind: PipelineRun
 metadata:
   name: pipelinerun 
 spec:
-  serviceAccountName: docker-login
+  taskRunTemplate:
+    serviceAccountName: docker-login
   pipelineRef:
     name: nodejs-pipeline
   params:
