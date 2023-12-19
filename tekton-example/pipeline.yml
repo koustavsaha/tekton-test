@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1beta1
+apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: nodejs-pipeline
@@ -7,7 +7,7 @@ spec:
     - name: IMAGE
       description: Image description
       type: string
-      default: "docker.io/joeshiett/nodejs-app"
+      default: "docker.io/koustavs18/nodejs-app"
     - name: TAG
       description: Preferred tag
       default: latest
@@ -17,12 +17,13 @@ spec:
     - name: fetch-repository
       taskRef:
         name: git-clone
+        kind: ClusterTask
       workspaces:
         - name: output
           workspace: linked-workspace
       params:
         - name: url
-          value: https://github.com/joeshiett/tekton-test
+          value: https://github.com/koustavsaha/tekton-test
         - name: subdirectory
           value: ""
         - name: deleteExisting
@@ -30,6 +31,7 @@ spec:
     - name: build-push-image
       taskRef:
         name: buildah
+        kind: ClusterTask
       runAfter:
         - fetch-repository
       workspaces:

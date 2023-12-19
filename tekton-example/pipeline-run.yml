@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1beta1
+apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
   generateName: nodejs-pipelinerun-
@@ -8,7 +8,7 @@ spec:
     name: nodejs-pipeline
   params:
     - name: IMAGE
-      value: docker.io/joeshiett/nodejs-app
+      value: docker.io/koustavs18/nodejs-app
     - name: TAG
       value: latest
   workspaces:

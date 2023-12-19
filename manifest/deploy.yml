@@ -14,7 +14,7 @@ spec:
     spec:                   
       containers: 
       - name: nodejs-app 
-        image: joeshiett/nodejs-app:latest
+        image: koustavs18/nodejs-app:latest
         ports:
         - containerPort: 8081
 ---
